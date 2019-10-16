@@ -1,14 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-card>
+    Connecting to client
+    <ion-item>
+      <ion-label>Client Connection Selection</ion-label>
+      <ion-select [(ngModel)]="connectedClient">
+        <li *ngFor="let con of clientList">
+          <ion-select-option value="{{ con }}">{{ con }}</ion-select-option>
+        </li>
+      </ion-select>
+    </ion-item>
+    <ion-button [disabled]="!connectedClient" (click)="connectToClient()">Connect to client</ion-button>
+  </ion-card>
 </ion-content>

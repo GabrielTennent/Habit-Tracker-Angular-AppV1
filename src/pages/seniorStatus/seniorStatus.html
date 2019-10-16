@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Senior Status
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="loadBatteryPage()"><ion-icon name="battery-full"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>Last Movement Location:</ion-card-header>
+    <ion-card-content>{{ this.locationMessage }}</ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>Time Since Last Movement Detected:</ion-card-header>
+    <ion-card-content>Mins: {{ this.timerMins }} Secs: {{ this.timer }}</ion-card-content>
+  </ion-card>
+
+  <ion-item *ngIf="bedroomCount > 0 || kitchenCount > 0 || livingCount > 0 || toiletCount > 0 || diningCount > 0">
+    <canvas
+      baseChart
+      height="100"
+      width="100"
+      [data]="pieChartData"
+      [labels]="pieChartLabels"
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [colors]="pieChartColors"
+      [legend]="pieChartLegend"
+    >
+    </canvas>
+  </ion-item>
+
+  <ion-card *ngIf="bedroomCount > 0 || kitchenCount > 0 || livingCount > 0 || toiletCount > 0 || diningCount > 0">
+    <ion-card-header>Tally of total movments:</ion-card-header>
+    <ion-card-content>Kitchen Movements: {{ this.kitchenCount }}</ion-card-content>
+    <ion-card-content>Dining room Movements: {{ this.diningCount }}</ion-card-content>
+    <ion-card-content>Living room Movements: {{ this.livingCount }}</ion-card-content>
+    <ion-card-content>Bedroom Movements: {{ this.bedroomCount }}</ion-card-content>
+    <ion-card-content>Toilet Movements: {{ this.toiletCount }}</ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content
+      >Status: <b>{{ this.mqttStatus }}</b></ion-card-content
+    >
+    <ion-row justify-content-center align-items-center>
+      <button ion-button (click)="connect()">Connect</button>
+      <button ion-button (click)="disconnect()">Disconnect</button>
+    </ion-row>
+  </ion-card>
+</ion-content>

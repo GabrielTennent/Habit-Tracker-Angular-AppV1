@@ -1,5 +1,5 @@
-# IonicApplication2
+# Angular web application
 
-This is a Ionic application that can be run using Ionic run commands in the terminal.
+This is a Angular application. Connects to server that returns movements and displays those movements.
 
 325-a3-report-tennengabr.pdf is the report file for this project with screen shots of the application. 
